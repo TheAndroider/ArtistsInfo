@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp">
+            <TextView
+                    android:id="@+id/tv_artist_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Micheal Jackson"
+                    android:singleLine="true"
+                    android:maxLength="70"
+                    android:ellipsize="end"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+            <TextView
+                    android:id="@+id/tv_track_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:paddingTop="4dp"
+                    android:singleLine="true"
+                    android:maxLength="70"
+                    android:ellipsize="end"
+                    android:text="Moon"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black" />
+            <TextView
+                    android:id="@+id/tv_track_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingStart="0dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:text="$5"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+            <TextView
+                    android:id="@+id/tv_release_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingStart="0dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:text="June 06,1985"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+            <TextView
+                    android:id="@+id/tv_primary_genre_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingStart="0dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:text="Primary Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>
