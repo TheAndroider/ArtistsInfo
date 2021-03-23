@@ -25,14 +25,6 @@ public class ArtistInfoActivity extends Activity implements ArtistsInfoContract.
     ArtistsInfoContract.ArtistsInfoPresenter presenter;
     private String artistName ="";
     List<ArtistInfoResults> artistInfoResultsList = new ArrayList<>();
-    private boolean isLoading = false;
-    private boolean isLastPage = false;
-    /**
-     * The constant PAGE_SIZE.
-     */
-    private static final int PAGE_SIZE = 30;
-    private static final int OFFSET = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,49 +45,19 @@ public class ArtistInfoActivity extends Activity implements ArtistsInfoContract.
         recyclerView.setHasFixedSize(true);
         artistInfoDetailsAdapter = new ArtistInfoDetailsAdapter(this);
         recyclerView.setAdapter(artistInfoDetailsAdapter);
-        recyclerView.addOnScrollListener(new PaginationScrollListener(layoutManager) {
-            @Override
-            public boolean isLoading() {
-                return isLoading;
-            }
-
-            @Override
-            public boolean isLastPage() {
-                return isLastPage;
-            }
-
-            @Override
-            protected void loadMoreItems() {
-                recyclerView.post(() -> {
-                    isLoading = true;
-                    artistInfoDetailsAdapter.addLoadingFooter();
-                    presenter.getArtistsInfo(artistName,PAGE_SIZE,artistInfoResultsList.size());
-                });
-            }
-        });
 
     }
 
-    private void loadFirstPage() {
+    private void loadData() {
         artistInfoDetailsAdapter = new ArtistInfoDetailsAdapter(this);
-        artistInfoDetailsAdapter.setArtistInfo(artistInfoResultsList,isLoading);
+        artistInfoDetailsAdapter.setArtistInfo(artistInfoResultsList);
        recyclerView.setAdapter(artistInfoDetailsAdapter);
         artistInfoDetailsAdapter.notifyDataSetChanged();
-        isLastPage = artistInfoResultsList.size() < PAGE_SIZE;
-       // TODO later
-//        checkEmptyState();
-    }
-    private void loadNextPage(List<ArtistInfoResults> artistInfoResultsList) {
-        artistInfoDetailsAdapter.removeLoadingFooter();
-        isLoading = false;
-        artistInfoDetailsAdapter.setArtistInfo(artistInfoResultsList,isLoading);
-        isLastPage = artistInfoResultsList.size() < PAGE_SIZE;
-//        isLastPage = false; // CMC: Temp Code
     }
 
     private void setupMVP(String artistName) {
         presenter = new ArtistInfoPresenterImp(this);
-        presenter.getArtistsInfo(artistName, PAGE_SIZE, artistInfoResultsList.size());
+        presenter.getArtistsInfo(artistName);
     }
 
     @Override
@@ -111,12 +73,6 @@ public class ArtistInfoActivity extends Activity implements ArtistsInfoContract.
     @Override
     public void showArtistInfoResults(List<ArtistInfoResults> artistInfoResults) {
         this.artistInfoResultsList = artistInfoResults;
-        if(isLoading){
-            loadNextPage(artistInfoResultsList);
-        }else{
-            loadFirstPage();
-        }
-
-
+        loadData();
     }
 }
